@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Wishing</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #0d0d0d;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 50px; /* Adjust the margin as needed */
+        }
+
+        .neon-text {
+            font-size: 3em;
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                         0 0 20px rgba(255, 255, 255, 0.8),
+                         0 0 30px rgba(255, 255, 255, 0.8);
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+            animation: neonGlow 1s infinite alternate;
+        }
+
+        .sub-text {
+            font-size: 1.5em;
+            margin-top: 20px;
+            margin-bottom: 20px; /* Adjust the margin as needed */
+            position: relative;
+            z-index: 2;
+            color: #ff77ff; /* Neon Pink */
+        }
+
+        .party-popper {
+            position: absolute;
+            animation: popper 4s ease-out infinite;
+            z-index: 1; /* Place it below the text */
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Place it below everything */
+        }
+
+        @keyframes neonGlow {
+            from, to {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                             0 0 20px rgba(255, 255, 255, 0.8),
+                             0 0 30px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                             0 0 40px rgba(255, 255, 255, 0.8),
+                             0 0 60px rgba(255, 255, 255, 0.8);
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="particles-js"></div>
+        <div class="neon-text">
+            Happy New Year
+            <span class="blink bounceUp" id="year"> 2023</span>
+        </div>
+        <div class="sub-text">
+            <br>
+            <br>
+            <br>Happy new year <br>
+        Kunnu vavve </div>
+        <div class="party-popper"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            particlesJS("particles-js", {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: "#ffffff"
+                    },
+                    shape: {
+                        type: "circle",
+                        stroke: {
+                            width: 0,
+                            color: "#000000"
+                        },
+                        polygon: {
+                            nb_sides: 5
+                        },
+                        image: {
+                            src: "img/github.svg",
+                            width: 100,
+                            height: 100
+                        }
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: false,
+                        anim: {
+                            enable: false,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 40,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#ffffff",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 6,
+                        direction: "none",
+                        random: false,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: "repulse"
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 400,
+                            line_linked: {
+                                opacity: 1
+                            }
+                        },
+                        bubble: {
+                            distance: 400,
+                            size: 40,
+                            duration: 2,
+                            opacity: 8,
+                            speed: 3
+                        },
+                        repulse: {
+                            distance: 200,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 4
+                        },
+                        remove: {
+                            particles_nb: 2
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+
+            setInterval(changeYear, 3000);
+        });
+
+        function changeYear() {
+            const yearElement = document.getElementById('year');
+            const currentYear = yearElement.innerText.trim();
+            const newYear = currentYear === '2023' ? '2024' : '2023';
+            yearElement.classList.add('blink', 'bounceUp');
+            setTimeout(() => {
+                yearElement.classList.remove('blink', 'bounceUp');
+                yearElement.innerText = newYear;
+            }, 500); // Adjust the timing if needed
+        }
+    </script>
+</body>
+</html>
